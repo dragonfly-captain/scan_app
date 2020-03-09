@@ -263,7 +263,7 @@
 					})
 			},
 			goLogin(){
-				this.$refs['Message'].warn('登陸已過期，請重新登陸');
+				this.$refs['Message'].warn('登錄已過期，請重新登錄');
 				uni.removeStorage({ key: 'token' });
 				setTimeout(() => {
 					uni.redirectTo({

@@ -3,7 +3,7 @@ let baseUrl =  "https://testkylx01.datailinc.com/"
 // let baseUrl =  "https://192.168.7.11:11001/"
 let ajaxUrl = {
     getAuthCode:baseUrl + "admin/getAuthCode",//獲取驗證碼
-    loginByPassword:baseUrl + "admin/loginByPassword",//登陸
+    loginByPassword:baseUrl + "admin/loginByPassword",//登錄
     info:baseUrl + "admin/info",//個人信息
     scanCodeForProduct:baseUrl + "receive/scanCodeForProduct",//掃碼領取
     getOrder:baseUrl + "receive/getOrder",//訂單領取，確認發放

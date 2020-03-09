@@ -48,14 +48,14 @@
 					});
 					
 				}else{
-					if(!this.hintNum){
-						that.$refs['Message'].warn('請填寫驗證碼')
-						return
-					}else if(!this.passNum){
+					if(!this.passNum){
 						that.$refs['Message'].warn('請填寫密碼')
 						return
+					}else if(!this.hintNum){
+						that.$refs['Message'].warn('請填寫驗證碼')
+						return
 					}
-					that.$refs['Message'].info('正在登陸')
+					that.$refs['Message'].info('正在登錄')
 					let data = {
 						username:this.phone,
 						authCode:this.hintNum,
@@ -70,7 +70,7 @@
 						}else if(res[1].data.code == 400){
 							that.$refs['Message'].warn('驗證碼錯誤');
 						}else if(res[1].data.code == 200){
-							that.$refs['Message'].success('登陸成功')
+							that.$refs['Message'].success('登錄成功')
 							console.log(res[1].data.data.token,"TOKEN")
 							let token = res[1].data.data.tokenHead + res[1].data.data.token;
 							uni.setStorage({
