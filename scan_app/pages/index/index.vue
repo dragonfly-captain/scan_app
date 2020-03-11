@@ -40,6 +40,7 @@
 				:initValue="geterDistribute"
 				:selectHideType="'hideAll'"
 				class="site1"
+				@changeVal='changeVal'
 			></xfl></view>
 			<!-- <view><text class="text_bar">領取站點：</text><text class="text_info" @click="sheet">{{geterDistribute}}</text></view> -->
 			<view><text class="text_bar">領取編號：</text><text class="text_info">{{qrCode}}</text></view>
@@ -116,12 +117,12 @@
 		methods: {
 			startScan(){
 				let that = this;
-				uni.scanCode({
-					success: function (res) {
-						console.log('条码类型：' + res.scanType);
-						console.log('条码内容：' + res.result);
-						that.qrCode = res.result;
-						// that.qrCode = '22oqvw';
+				// uni.scanCode({
+				// 	success: function (res) {
+				// 		console.log('条码类型：' + res.scanType);
+				// 		console.log('条码内容：' + res.result);
+				// 		that.qrCode = res.result;
+						that.qrCode = 'zlosky';
 						httpService("receive/getOrder?qrCode="+that.qrCode
 						,null,"POST")
 							.then((res) => {
@@ -157,12 +158,16 @@
 								that.scaning = true;
 								that.$refs['Message'].warn('網絡出錯，請重試');
 							})
-					},
-					fail: function(err){
-						that.scaning = true;
-						that.$refs['Message'].warn('請重試');
-					}
-				});
+				// 	},
+				// 	fail: function(err){
+				// 		that.scaning = true;
+				// 		that.$refs['Message'].warn('請重試');
+				// 	}
+				// });
+			},
+			changeVal(val){
+				//选择完地区后重新给地区字段赋值
+				this.geterDistribute = val;
 			},
 			affirm(){
 				let that = this;
@@ -178,11 +183,10 @@
 					return
 				}
 				this.list.forEach((v,i) => {
-					this.list.push(v.distributeName)
-					this.idList.push(v.distributeId)
-					if(v = this.distributeName){
+					if(v == this.geterDistribute){
 						this.geterDistriId = this.idList[i]
 					}
+					
 				})
 				let data = {
 					"qrCode": that.qrCode,
@@ -245,11 +249,13 @@
 					.then((res) => {
 						if(res[1].data.code == 200){
 							// this.list = res[1].data.data.list;distributeName
+							this.list = [];
+							this.idList = [];
 							res[1].data.data.list.forEach((v,i) => {
 								this.list.push(v.distributeName)
 								this.idList.push(v.distributeId)
 							})
-							
+							console.log(this.idList,"jjjj")
 						}else if(res[1].data.code == 401){
 							that.goLogin();
 						}

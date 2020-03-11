@@ -38,7 +38,7 @@
 			httpService("getAuthCode",{telephone:this.phone},"GET")
 					.then((res) => {
 						if(res[1].data.code == 500){
-							if(res[1].data.message == '手机号无权限'){
+							if(res[1].data.message == '手機號無權限'){
 								that.$refs['Message'].warn('此手機號暫無權限')
 							}else{
 								that.$refs['Message'].warn('操作頻繁，請稍後再試')

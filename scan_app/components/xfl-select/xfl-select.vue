@@ -42,7 +42,7 @@
 				>
 					<div>{{item.value}}</div>
 				</div>
-				<div v-show="innerList.length==0" class="data-state item">无数据</div>
+				<div v-show="innerList.length==0" class="data-state item">無數據</div>
 				<!-- <slot></slot> -->
 			</scroll-view>
 		</div>
@@ -323,7 +323,7 @@
 					this.setItemActive(index, value); // 将这一项设置为选中项
 					this.$emit('change', {newVal: value, oldVal: this.selectText, 
 											index: index, orignItem: this.list[index]});
-											
+					this.$emit('changeVal',value)						
 					this.setInput(value);   // 更改输入框的值
 				}
 			},
@@ -763,7 +763,7 @@
 	@mouse-move-color: #f5f7fa;  //在列表项上按下时的列表项的背景色
 	@padding-left: 5%;           //两侧的边距
 	@arrowWidth: 12%;            //右边的小三角按钮区域的宽度
-
+	@v: 3.75vw;
 	.placeholder11{
 		color: red; top: 10px;
 	}
@@ -799,7 +799,7 @@
 		position: relative;
 		.input{
 			width: 100%; height: 100%; 
-			font-size: 18px;
+			font-size: 16/@v;
 			color: #000;
 			display: flex; align-items: center; justify-content: flex-start;
 		}
@@ -902,11 +902,12 @@
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  	font-family: "iconfont" !important;
+//   font-size: 16px;
+	font-size: 16/@v;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .iconshanchu1:before {

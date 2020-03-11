@@ -1,5 +1,6 @@
 import { urlRequest } from "../utils/request";
-let baseUrl =  "https://testkylx01.datailinc.com/"
+// let baseUrl =  "https://testkylx01.datailinc.com/"
+let baseUrl =  "https://pro1.maskforhk.online/"
 // let baseUrl =  "https://192.168.7.11:11001/"
 let ajaxUrl = {
     getAuthCode:baseUrl + "admin/getAuthCode",//獲取驗證碼
